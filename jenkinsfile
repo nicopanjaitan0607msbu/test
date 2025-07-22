@@ -1,13 +1,12 @@
 def name = "local"
 
 podTemplate(
-    label: fullname,
     inheritFrom: 'ubuntu-agent-pod',
     containers: [
         containerTemplate(name: 'ubuntu', image: 'ubuntu:latest', command: 'cat', ttyEnabled: true)
     ]
 ) {
-    node(fullname) {
+    node() {
             stage('Test'){
               container('ubuntu') {
               sh "echo 'ini jenkins pod template'"
